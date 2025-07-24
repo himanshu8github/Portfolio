@@ -3,15 +3,23 @@ import React from 'react';
 const skills = [
   {
     title: '💻 Languages',
-    items: ['Python', 'C', 'Java', 'JavaScript', 'SQL', ],
+    items: ['JavaScript', 'Java', 'C', 'C++', 'Python'],
   },
   {
-    title: '🛠️ Frameworks & Databases',
-    items: ['React.js', 'Node.js', 'Express.js', 'Tailwind CSS', 'MySQL', 'MongoDB', ''],
+    title: '🛠️ Frameworks & Libraries',
+    items: ['React.js', 'Node.js', 'Express.js', 'Tailwind CSS',],
   },
   {
-    title: '⚙️ Tools',
-    items: ['Git & GitHub', 'Postman', 'Render', 'Vercel', ],
+    title: '🗄️ Databases & Cloud',
+    items: ['MongoDB', 'Firebase', 'MySQL(Basic)'],
+  },
+  {
+    title: '⚙️ Tools & Platforms',
+    items: ['Git & GitHub', 'Postman', 'Nodemailer', 'JWT', 'Google Firebase Auth'],
+  },
+  {
+    title: '🧠 Others',
+    items: ['REST APIs', 'Responsive Design', 'Problem Solving (DSA)'],
   },
 ];
 
