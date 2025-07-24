@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { Menu, X } from "lucide-react"; // for icons
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const navbarRef = useRef(null);
@@ -23,9 +23,9 @@ const Navbar = () => {
   return (
     <header
       ref={navbarRef}
-      className="sticky top-0 z-50 bg-white shadow-md backdrop-blur-sm mt-3"
+      className="sticky top-0 z-50 bg-white shadow-md backdrop-blur-sm"
     >
-      <nav className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center font-medium text-sm text-gray-700">
+      <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center font-medium text-sm text-gray-700">
         {/* Logo */}
         <div className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-500 tracking-wide animate-pulse">
           Himanshu.dev
@@ -45,24 +45,24 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Hamburger Icon - Mobile */}
+        {/* Hamburger Icon */}
         <div className="md:hidden">
           <button onClick={toggleMenu} className="text-blue-600">
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-      </nav>
+      </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Dropdown */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white shadow-inner border-t border-gray-200 px-4 pb-4">
-          <ul className="flex flex-col items-start gap-3">
+        <div className="md:hidden px-4 pb-4">
+          <ul className="flex flex-col items-center gap-3 bg-white rounded-xl py-4 shadow-md">
             {["Home", "About", "Skills", "Projects", "Contact"].map((section) => (
-              <li key={section} className="w-full">
+              <li key={section} className="w-full text-center">
                 <a
                   href={`#${section.toLowerCase()}`}
                   onClick={() => setIsMenuOpen(false)}
-                  className="block w-full text-left px-4 py-2 rounded-xl bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 font-medium hover:bg-blue-200 transition-all"
+                  className="block px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 font-semibold hover:bg-blue-200 transition"
                 >
                   {section}
                 </a>
