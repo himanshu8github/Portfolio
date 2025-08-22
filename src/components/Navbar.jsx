@@ -13,7 +13,7 @@ const Navbar = () => {
     const element = document.getElementById(id.toLowerCase());
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false); // close menu after clicking
+      setIsMenuOpen(false); // close menu after click
     }
   };
 
