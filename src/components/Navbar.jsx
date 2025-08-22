@@ -8,6 +8,15 @@ const Navbar = () => {
     setIsMenuOpen((prev) => !prev);
   };
 
+  // Smooth scroll to section by id
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id.toLowerCase());
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setIsMenuOpen(false); // close menu after clicking
+    }
+  };
+
   // Close menu automatically on scroll
   useEffect(() => {
     if (isMenuOpen) {
@@ -22,6 +31,8 @@ const Navbar = () => {
     }
   }, [isMenuOpen]);
 
+  const sections = ["Home", "About", "Skills", "Projects", "Contact"];
+
   return (
     <header className="sticky top-0 z-50 bg-black shadow-md backdrop-blur-sm transition-transform duration-700 ease-out">
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center font-medium text-sm text-gray-700">
@@ -32,14 +43,14 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-4 sm:gap-6">
-          {["Home", "About", "Skills", "Projects", "Contact"].map((section) => (
+          {sections.map((section) => (
             <li key={section}>
-              <a
-                href={`#${section.toLowerCase()}`}
+              <button
+                onClick={() => scrollToSection(section)}
                 className="px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-medium shadow-md hover:scale-105 hover:shadow-lg transition-all duration-300"
               >
                 {section}
-              </a>
+              </button>
             </li>
           ))}
         </ul>
@@ -61,15 +72,14 @@ const Navbar = () => {
         }`}
       >
         <ul className="flex flex-col items-center gap-3 bg-white rounded-xl py-4 shadow-md">
-          {["Home", "About", "Skills", "Projects", "Contact"].map((section) => (
+          {sections.map((section) => (
             <li key={section} className="w-full text-center">
-              <a
-                href={`#${section.toLowerCase()}`}
-                onClick={() => setIsMenuOpen(false)} // close on click
-                className="block px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 font-semibold hover:bg-blue-200 transition"
+              <button
+                onClick={() => scrollToSection(section)}
+                className="block w-full px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 font-semibold hover:bg-blue-200 transition"
               >
                 {section}
-              </a>
+              </button>
             </li>
           ))}
         </ul>
