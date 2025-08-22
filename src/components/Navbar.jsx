@@ -1,20 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
-  const navbarRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    gsap.from(navbarRef.current, {
-      y: -10,
-      opacity: 1,
-      duration: 1,
-      delay: 0.2,
-      ease: "power3.out",
-    });
-  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -22,8 +10,7 @@ const Navbar = () => {
 
   return (
     <header
-      ref={navbarRef}
-      className="sticky top-0 z-50 bg-white shadow-md backdrop-blur-sm"
+      className="sticky top-0 z-50 bg-black shadow-md backdrop-blur-sm transition-transform duration-700 ease-out translate-y-0 animate-fade-in"
     >
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center font-medium text-sm text-gray-700">
         {/* Logo */}
@@ -47,30 +34,34 @@ const Navbar = () => {
 
         {/* Hamburger Icon */}
         <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-blue-600">
+          <button onClick={toggleMenu} className="text-blue-500">
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Dropdown */}
-      {isMenuOpen && (
-        <div className="md:hidden px-4 pb-4">
-          <ul className="flex flex-col items-center gap-3 bg-white rounded-xl py-4 shadow-md">
-            {["Home", "About", "Skills", "Projects", "Contact"].map((section) => (
-              <li key={section} className="w-full text-center">
-                <a
-                  href={`#${section.toLowerCase()}`}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="block px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 font-semibold hover:bg-blue-200 transition"
-                >
-                  {section}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <div
+        className={`md:hidden px-4 pb-4 transition-all duration-500 ease-in-out ${
+          isMenuOpen
+            ? "max-h-96 opacity-100 translate-y-0"
+            : "max-h-0 opacity-0 -translate-y-5 overflow-hidden"
+        }`}
+      >
+        <ul className="flex flex-col items-center gap-3 bg-white rounded-xl py-4 shadow-md">
+          {["Home", "About", "Skills", "Projects", "Contact"].map((section) => (
+            <li key={section} className="w-full text-center">
+              <a
+                href={`#${section.toLowerCase()}`}
+                onClick={() => setIsMenuOpen(false)}
+                className="block px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 font-semibold hover:bg-blue-200 transition"
+              >
+                {section}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </header>
   );
 };

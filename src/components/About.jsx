@@ -1,17 +1,49 @@
 import React from "react";
 
 const About = () => (
-  <section
-    className="py-16 bg-white px-8 text-center"
-    data-aos="fade-up"
-    data-aos-duration="1000"
-    data-aos-delay="200"
-  >
-    <h2 className="text-3xl font-semibold mb-4">About Me</h2>
-    <p className="max-w-2xl mx-auto">
-      Hey, I'm Himanshu Choudhary — a Full Stack Developer and AI Enthusiast with a love for crafting powerful, user-friendly web applications that actually make a difference. Whether it’s frontend finesse or backend logic, I thrive on turning complex ideas into clean, functional digital solutions.
+  <section className="py-20 bg-black px-6 md:px-12 text-center text-white">
+    {/* Heading in Blue */}
+    <h2 className="text-3xl md:text-4xl font-bold mb-6 text-blue-500">
+      About Me
+    </h2>
 
-My tech journey began with a simple curiosity about how things work — now, it’s evolved into a full-blown obsession with building, learning, and experimenting. I’m especially passionate about artificial intelligence, React, and anything that challenges me to think differently. Let’s just say: I never stop leveling up.
+    {/* Paragraphs in White */}
+    <p className="max-w-3xl mx-auto leading-relaxed text-lg md:text-xl mb-6">
+      I'm <span className="font-semibold">Himanshu Choudhary</span>, a{" "}
+      <span className="font-semibold">
+        final-year Computer Science Engineering student
+      </span>{" "}
+      with strong expertise in{" "}
+      <span className="font-semibold">full-stack development (MERN)</span> and{" "}
+      <span className="font-semibold">AI-powered applications</span>. Over the
+      past years, I’ve built and deployed{" "}
+      <span className="font-semibold">4+ AI-driven projects</span> — from{" "}
+      <span className="font-semibold">TravelBuddy</span> to{" "}
+      <span className="font-semibold">TextTune</span> and{" "}
+      <span className="font-semibold">Ethical AI Detector</span> — serving{" "}
+      <span className="font-semibold">50+ active users</span>.
+    </p>
+
+    <p className="max-w-3xl mx-auto leading-relaxed text-lg md:text-xl mb-6">
+      My toolkit includes{" "}
+      <span className="font-semibold">
+        React, Node.js, Express, Firebase, Shadcn, and Tailwind
+      </span>
+      , along with AI APIs like{" "}
+      <span className="font-semibold">Gemini</span> and{" "}
+      <span className="font-semibold">Cohere</span>. With a strong foundation in{" "}
+      <span className="font-semibold">Java</span> and{" "}
+      <span className="font-semibold">DSA</span>, I enjoy solving real-world
+      problems through{" "}
+      <span className="italic">scalable architecture and responsive design</span>.
+    </p>
+
+    <p className="max-w-3xl mx-auto leading-relaxed text-lg md:text-xl">
+      Beyond coding, I thrive on{" "}
+      <span className="font-semibold">learning, experimenting, and sharing knowledge</span>. 
+      Whether it’s <span className="font-semibold">building new projects</span>, contributing to{" "}
+      <span className="font-semibold">open source</span>, or exploring{" "}
+      <span className="font-semibold">AI.</span> 
     </p>
   </section>
 );

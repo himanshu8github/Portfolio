@@ -10,7 +10,7 @@ import CertificatesAndSoftSkills from "./components/CertificatesAndSoftSkills";
 
 export default function App() {
   return (
-    <div className="font-[Poppins] text-gray-800">
+    <div className="font-[Poppins] ">
       <Navbar />
       <section id="home">
         <Hero />
