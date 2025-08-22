@@ -8,13 +8,12 @@ const Navbar = () => {
     setIsMenuOpen((prev) => !prev);
   };
 
-  // Smooth scroll to section by id
   const scrollToSection = (id) => {
-    const element = document.getElementById(id.toLowerCase());
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false); // close menu after click
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
     }
+    setIsMenuOpen(false); // close menu after clicking
   };
 
   // Close menu automatically on scroll
@@ -23,15 +22,12 @@ const Navbar = () => {
       const handleScroll = () => {
         setIsMenuOpen(false);
       };
-
       window.addEventListener("scroll", handleScroll);
       return () => {
         window.removeEventListener("scroll", handleScroll);
       };
     }
   }, [isMenuOpen]);
-
-  const sections = ["Home", "About", "Skills", "Projects", "Contact"];
 
   return (
     <header className="sticky top-0 z-50 bg-black shadow-md backdrop-blur-sm transition-transform duration-700 ease-out">
@@ -43,10 +39,10 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-4 sm:gap-6">
-          {sections.map((section) => (
+          {["Home", "About", "Skills", "Projects", "Contact"].map((section) => (
             <li key={section}>
               <button
-                onClick={() => scrollToSection(section)}
+                onClick={() => scrollToSection(section.toLowerCase())}
                 className="px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-medium shadow-md hover:scale-105 hover:shadow-lg transition-all duration-300"
               >
                 {section}
@@ -72,10 +68,10 @@ const Navbar = () => {
         }`}
       >
         <ul className="flex flex-col items-center gap-3 bg-white rounded-xl py-4 shadow-md">
-          {sections.map((section) => (
+          {["Home", "About", "Skills", "Projects", "Contact"].map((section) => (
             <li key={section} className="w-full text-center">
               <button
-                onClick={() => scrollToSection(section)}
+                onClick={() => scrollToSection(section.toLowerCase())}
                 className="block w-full px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 font-semibold hover:bg-blue-200 transition"
               >
                 {section}
