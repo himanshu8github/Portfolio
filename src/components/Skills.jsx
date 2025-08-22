@@ -1,9 +1,11 @@
 import React from "react";
 import {
   Code,
-  Layers,
+  Layout,
+  Server,
   Database,
   Wrench,
+  Puzzle,
 } from "lucide-react";
 
 const skills = [
@@ -13,31 +15,29 @@ const skills = [
     items: ["C", "Python", "Java", "JavaScript", "TypeScript", "HTML5", "CSS3", "SQL"],
   },
   {
-    title: "Frameworks & Libraries",
-    icon: <Layers className="w-6 h-6 text-purple-500" />,
-    items: ["React.js", "Tailwind CSS", "Shadcn", "Node.js", "Express.js"],
+    title: "Frontend",
+    icon: <Layout className="w-6 h-6 text-purple-500" />,
+    items: ["React.js", "Tailwind CSS", "Shadcn"],
+  },
+  {
+    title: "Backend",
+    icon: <Server className="w-6 h-6 text-yellow-500" />,
+    items: ["Node.js", "Express.js","Firebase (Auth)", "Postgres (Basics)"],
   },
   {
     title: "Databases & Cloud",
     icon: <Database className="w-6 h-6 text-green-500" />,
-    items: ["MongoDB", "Postgres (Basics)", "MySQL (Basics)", "Firebase (Auth & Firestore)"],
+    items: ["MongoDB", "Firebase(Database)","MySQL (Basics)", "Postgres(Basics)"],
   },
   {
     title: "Tools & Platforms",
     icon: <Wrench className="w-6 h-6 text-orange-500" />,
-    items: [
-      "Git & GitHub",
-      "Postman",
-      "VS Code",
-      "Bash",
-      "Render",
-      "Vercel",
-      "Nodemailer",
-      "JWT",
-      "Bcrypt",
-      "Zustand",
-      "WebSocket",
-    ],
+    items: ["Git & GitHub", "Postman", "VS Code", "Bash", "Render", "Vercel"],
+  },
+  {
+    title: "Other Technologies",
+    icon: <Puzzle className="w-6 h-6 text-pink-500" />,
+    items: ["Nodemailer", "JWT", "Bcrypt", "Zustand", "WebSocket"],
   },
 ];
 
@@ -50,8 +50,8 @@ export default function Skills() {
           Here are the technologies and tools I use to build scalable, modern, and responsive applications.
         </p>
 
-        {/* Changed grid to 4 columns */}
-        <div className="grid md:grid-cols-4 gap-8 text-left">
+        {/* Responsive grid: 2 cols on medium, 3 cols on large */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
           {skills.map((category, index) => (
             <div
               key={index}

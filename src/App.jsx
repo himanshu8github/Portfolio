@@ -5,7 +5,7 @@ import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Navbar from "./components/Navbar";
-import CertificatesAndSoftSkills from "./components/CertificatesAndSoftSkills";
+// import CertificatesAndSoftSkills from "./components/CertificatesAndSoftSkills";
 
 
 export default function App() {
@@ -24,9 +24,9 @@ export default function App() {
       <section id="projects">
         <Projects />
       </section>
-       <section id="extras">
+       {/* <section id="extras">
         <CertificatesAndSoftSkills />
-      </section>
+      </section> */}
       <section id="contact">
         <Contact />
       </section>
