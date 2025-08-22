@@ -1,49 +1,60 @@
-import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { MoreVertical } from "lucide-react";
 
-const Navbar = () => {
+const sections = ["Home", "About", "Skills", "Projects", "Contact"];
+
+export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const headerRef = useRef(null);
 
-  const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
+  const toggleMenu = () => setIsMenuOpen((v) => !v);
 
-  const scrollToSection = (id) => {
+  // Scroll with offset (so sticky navbar doesn't cover the target)
+  const scrollWithOffset = (id) => {
     const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsMenuOpen(false); // close menu after clicking
+    if (!el) return;
+    const headerH = headerRef.current?.offsetHeight ?? 0;
+    const y = el.getBoundingClientRect().top + window.scrollY - headerH - 8;
+    window.scrollTo({ top: y, behavior: "smooth" });
   };
 
-  // Close menu automatically on scroll
+  // Click handler for both desktop & mobile
+  const handleNavClick = (name) => {
+    const id = name.toLowerCase();
+    // Close menu first, then scroll on next frames (mobile-safe)
+    setIsMenuOpen(false);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => scrollWithOffset(id));
+    });
+  };
+
+  // Auto-close on page scroll
   useEffect(() => {
-    if (isMenuOpen) {
-      const handleScroll = () => {
-        setIsMenuOpen(false);
-      };
-      window.addEventListener("scroll", handleScroll);
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }
+    if (!isMenuOpen) return;
+    const onScroll = () => setIsMenuOpen(false);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, [isMenuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 bg-black shadow-md backdrop-blur-sm transition-transform duration-700 ease-out">
-      <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center font-medium text-sm text-gray-700">
+    <header
+      ref={headerRef}
+      className="sticky top-0 z-50 bg-black shadow-md backdrop-blur-sm"
+    >
+      <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center font-medium text-sm">
         {/* Logo */}
-        <div className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-500 tracking-wide animate-pulse">
+        <div className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-500 tracking-wide">
           Himanshu.dev
         </div>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-4 sm:gap-6">
-          {["Home", "About", "Skills", "Projects", "Contact"].map((section) => (
+          {sections.map((section) => (
             <li key={section}>
               <button
-                onClick={() => scrollToSection(section.toLowerCase())}
-                className="px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-medium shadow-md hover:scale-105 hover:shadow-lg transition-all duration-300"
+                type="button"
+                onClick={() => handleNavClick(section)}
+                className="px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-medium shadow-md hover:scale-105 hover:shadow-lg transition-all"
               >
                 {section}
               </button>
@@ -51,37 +62,40 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Hamburger Icon */}
+        {/* Three dots (mobile) */}
         <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-blue-500">
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          <button type="button" onClick={toggleMenu} className="text-blue-500">
+            <MoreVertical size={26} />
           </button>
         </div>
       </div>
 
-      {/* Mobile Dropdown */}
-      <div
-        className={`md:hidden px-4 pb-4 transition-all duration-500 ease-in-out ${
-          isMenuOpen
-            ? "max-h-96 opacity-100 translate-y-0"
-            : "max-h-0 opacity-0 -translate-y-5 overflow-hidden"
-        }`}
-      >
-        <ul className="flex flex-col items-center gap-3 bg-white rounded-xl py-4 shadow-md">
-          {["Home", "About", "Skills", "Projects", "Contact"].map((section) => (
-            <li key={section} className="w-full text-center">
-              <button
-                onClick={() => scrollToSection(section.toLowerCase())}
-                className="block w-full px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 font-semibold hover:bg-blue-200 transition"
-              >
-                {section}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {/* Mobile overlay dropdown (simple & reliable) */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-[60]" onClick={() => setIsMenuOpen(false)}>
+          {/* backdrop */}
+          <div className="absolute inset-0 bg-black/50" />
+          {/* menu panel (tap inside doesn't close automatically) */}
+          <div
+            className="absolute right-3 top-[64px] w-56 rounded-xl bg-white shadow-lg ring-1 ring-black/5 p-2"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <ul className="space-y-1">
+              {sections.map((section) => (
+                <li key={section}>
+                  <button
+                    type="button"
+                    onClick={() => handleNavClick(section)}
+                    className="w-full text-left px-4 py-2 rounded-lg text-blue-800 font-semibold hover:bg-blue-100 transition"
+                  >
+                    {section}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
     </header>
   );
-};
-
-export default Navbar;
+}
