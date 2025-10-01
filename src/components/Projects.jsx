@@ -99,19 +99,21 @@ const Projects = () => (
         </div>
       </div>
 
-      {/* Pronouncy */}
+      {/* Chatify */}
       <div className="p-6 border rounded-xl shadow bg-gray-900">
-        <h3 className="text-2xl font-bold mb-2 text-white">Pronouncy</h3>
+        <h3 className="text-2xl font-bold mb-2 text-white">Chatify</h3>
         <p className="mb-3 text-gray-300">
-          Real-time pronunciation training tool with TTS and speech feedback. 
-          Includes JWT authentication, pronunciation history, and mobile-friendly design.
+          Launched a full-stack real-time chat application with WebSocket enabling instant messaging between users,
+          providing a seamless and responsive chat experience. Implemented online user tracking, chat rooms, and
+          responsive UI with Tailwind CSS, improving engagement and usability. Users can create rooms, share IDs with
+          friends, and chat in real-time.
         </p>
         <div className="text-sm text-gray-400 mb-3">
-          <strong>Tech Used:</strong> React, Node.js, Express, MongoDB, JWT, Web Speech API
+          <strong>Tech Used:</strong> React, Node.js, Express, WebSocket, Tailwind CSS
         </div>
         <div className="flex justify-center gap-4">
           <a
-            href="https://pronouncy-frontend.onrender.com"
+            href="https://chatify-wsocket.onrender.com/"
             target="_blank"
             rel="noreferrer"
             className="text-blue-400 underline hover:text-blue-600 font-medium"
@@ -119,7 +121,7 @@ const Projects = () => (
             Live
           </a>
           <a
-            href="https://github.com/himanshu8github/Pronouncy"
+            href="https://github.com/himanshu8github/Chatify"
             target="_blank"
             rel="noreferrer"
             className="text-blue-400 underline hover:text-blue-600 font-medium"
@@ -127,6 +129,40 @@ const Projects = () => (
             GitHub
           </a>
         </div>
+      </div>
+
+      {/* Microsoft Azure Functions Project */}
+      <div className="p-6 border rounded-xl shadow bg-gray-900">
+        <h3 className="text-2xl font-bold mb-2 text-white">Azure Functions Deployment</h3>
+        <p className="mb-3 text-gray-300">
+          🚀 Built and deployed a serverless HTTP-triggered REST API on Microsoft Azure using Node.js. Implemented 
+          Azure AD authentication, API key security, and function-level authorization. Configured auto-scaling with 
+          the Consumption Plan (0–200 instances), integrated Application Insights for monitoring, and set up real-time 
+          logging & performance tracking. Gained hands-on experience in enterprise-level serverless architecture, 
+          deployment best practices, and monitoring production APIs.
+        </p>
+        <div className="text-sm text-gray-400 mb-3">
+          <strong>Tech Used:</strong> Node.js, Microsoft Azure Functions, Azure CLI, Azure AD, Application Insights
+        </div>
+        <div className="flex justify-center gap-4">
+          <a
+            href="https://github.com/himanshu8github/kalvigworkspace"
+            target="_blank"
+            rel="noreferrer"
+            className="text-blue-400 underline hover:text-blue-600 font-medium"
+          >
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      {/* Coming Soon */}
+      <div className="p-6 border rounded-xl shadow bg-gray-900 flex flex-col items-center justify-center">
+        <h3 className="text-2xl font-bold mb-2 text-white">🚧 Coming Soon</h3>
+        <p className="mb-3 text-gray-400">
+          A new exciting project is in development. Stay tuned for updates!
+        </p>
+        <div className="text-gray-500 italic">Loading...</div>
       </div>
     </div>
   </section>
