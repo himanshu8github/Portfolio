@@ -13,11 +13,16 @@ const About = () => (
       <span className="font-semibold">
         final-year Computer Science Engineering student
       </span>{" "}
-      with strong expertise in{" "}
+      and currently working as a{" "}
+      <span className="font-semibold">
+        Full Stack Web Developer Intern at Kalvig
+       
+      </span>
+      .  <br></br> I have strong expertise in{" "}
       <span className="font-semibold">full-stack development (MERN)</span> and{" "}
       <span className="font-semibold">AI-powered applications</span>. Over the
       past years, I’ve built and deployed{" "}
-      <span className="font-semibold">4+ AI-driven projects</span> — from{" "}
+      <span className="font-semibold">4+ AI-driven projects</span> from{" "}
       <span className="font-semibold">TravelBuddy</span> to{" "}
       <span className="font-semibold">TextTune</span> and{" "}
       <span className="font-semibold">Ethical AI Detector</span> — serving{" "}
@@ -31,19 +36,15 @@ const About = () => (
       </span>
       , along with AI APIs like{" "}
       <span className="font-semibold">Gemini</span> and{" "}
-      <span className="font-semibold">Cohere</span>. With a strong foundation in{" "}
-      <span className="font-semibold">Java</span> and{" "}
-      <span className="font-semibold">DSA</span>, I enjoy solving real-world
-      problems through{" "}
-      <span className="italic">scalable architecture and responsive design</span>.
+      <span className="font-semibold">Cohere</span>
     </p>
 
     <p className="max-w-3xl mx-auto leading-relaxed text-lg md:text-xl">
       Beyond coding, I thrive on{" "}
       <span className="font-semibold">learning, experimenting, and sharing knowledge</span>. 
-      Whether it’s <span className="font-semibold">building new projects</span>, contributing to{" "}
-      <span className="font-semibold">open source</span>, or exploring{" "}
-      <span className="font-semibold">AI.</span> 
+      Whether it’s <span className="font-semibold">building new projects</span>, or exploring{" "}
+      <span className="font-semibold">AI</span>. I am always curious and motivated 
+      to grow as a developer.
     </p>
   </section>
 );
