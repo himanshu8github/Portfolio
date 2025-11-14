@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { MoreVertical } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const sections = ["Home", "About", "Skills", "Projects", "Contact"];
 
@@ -39,63 +39,79 @@ export default function Navbar() {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-50 bg-black shadow-md backdrop-blur-sm"
+      className="sticky top-0 z-50 bg-black/95 backdrop-blur-md border-b border-gray-800/50 shadow-lg"
     >
-      <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center font-medium text-sm">
+      <div className="max-w-6xl mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
         {/* Logo */}
-        <div className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-500 tracking-wide">
+        <div className="text-lg md:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-purple-600 tracking-wide hover:scale-105 transition cursor-pointer"
+          onClick={() => scrollWithOffset("home")}
+        >
           Himanshu.dev
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-4 sm:gap-6">
+        <ul className="hidden md:flex gap-8">
           {sections.map((section) => (
             <li key={section}>
               <button
                 type="button"
                 onClick={() => handleNavClick(section)}
-                className="px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-medium shadow-md hover:scale-105 hover:shadow-lg transition-all"
+                className="text-gray-300 hover:text-blue-400 font-medium text-sm transition-colors duration-300 relative group"
               >
                 {section}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-600 group-hover:w-full transition-all duration-300"></span>
               </button>
             </li>
           ))}
         </ul>
 
-        {/* Three dots (mobile) */}
+        {/* Mobile Menu Button */}
         <div className="md:hidden">
-          <button type="button" onClick={toggleMenu} className="text-blue-500">
-            <MoreVertical size={26} />
+          <button 
+            type="button" 
+            onClick={toggleMenu} 
+            className="text-gray-300 hover:text-blue-400 transition"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile overlay dropdown (simple & reliable) */}
+      {/* Mobile Dropdown Menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-[60]" onClick={() => setIsMenuOpen(false)}>
-          {/* backdrop */}
-          <div className="absolute inset-0 bg-black/50" />
-          {/* menu panel (tap inside doesn't close automatically) */}
-          <div
-            className="absolute right-3 top-[64px] w-56 rounded-xl bg-white shadow-lg ring-1 ring-black/5 p-2"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <ul className="space-y-1">
-              {sections.map((section) => (
-                <li key={section}>
-                  <button
-                    type="button"
-                    onClick={() => handleNavClick(section)}
-                    className="w-full text-left px-4 py-2 rounded-lg text-blue-800 font-semibold hover:bg-blue-100 transition"
-                  >
-                    {section}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="md:hidden bg-gray-900/95 backdrop-blur-md border-t border-gray-800/50 px-4 py-4 animate-slideDown">
+          <ul className="space-y-2">
+            {sections.map((section) => (
+              <li key={section}>
+                <button
+                  type="button"
+                  onClick={() => handleNavClick(section)}
+                  className="w-full text-left px-4 py-2.5 rounded-lg text-gray-300 hover:bg-blue-500/10 hover:text-blue-400 font-medium text-sm transition-all duration-300"
+                >
+                  {section}
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
+
+      <style>{`
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-slideDown {
+          animation: slideDown 0.3s ease-out;
+        }
+      `}</style>
     </header>
   );
 }

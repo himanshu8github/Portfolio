@@ -1,171 +1,158 @@
 import React from "react";
+import { ExternalLink, Github } from "lucide-react";
 
-const Projects = () => (
-  <section
-    className="py-16 bg-black px-8 text-center text-white"
-    id="projects"
-  >
-    <h2 className="text-3xl font-semibold mb-8 text-blue-500">Projects</h2>
+const Projects = () => {
+  const projects = [
+    {
+      title: "TravelBuddy",
+      emoji: "✈️",
+      description: "AI-powered travel planner generating personalized itineraries using Gemini and Cohere API. Includes secure Firebase authentication and smart trip recommendations.",
+      tech: ["React", "Tailwind CSS", "Shadcn", "Gemini API", "Cohere API", "Express", "Node.js", "Firebase"],
+      live: "https://travelbuddy-1-m1pr.onrender.com/",
+      github: "https://github.com/himanshu8github/TravelBuddy"
+    },
+    {
+      title: "Ethical AI Detector",
+      emoji: "🤖",
+      description: "AI-driven bias detection tool that analyzes cultural, political, and emotional biases in text. Provides real-time scoring and rewriting suggestions for inclusive communication.",
+      tech: ["TypeScript", "React", "Shadcn", "Gemini API", "Express"],
+      live: "https://ai-baised-frontend.vercel.app/",
+      github: "https://github.com/himanshu8github/BiasedTextAnalyserAIFrontend"
+    },
+    {
+      title: "TextTune",
+      emoji: "✍️",
+      description: "AI writing assistant with grammar detection, contextual suggestions, and multilingual translation. Enhanced UI with optimized performance and real-time writing improvements.",
+      tech: ["React", "Tailwind CSS", "Gemini API", "Express", "Node.js", "Firebase"],
+      live: "https://texttune-project.onrender.com",
+      github: "https://github.com/himanshu8github/Ai-ChitChat"
+    },
+    {
+      title: "CodeMatrix",
+      emoji: "🚀",
+      description: "Master Data Structures & Algorithms with AI-powered guidance and real-time code execution. Write code in C++, Java, or JavaScript, test against test cases instantly.",
+      tech: ["React", "Tailwind CSS", "DaisyUI", "Monaco Editor", "Node.js", "Express", "MongoDB", "Redis", "Groq API", "Judge0 API"],
+      live: "https://code-matrix-one.vercel.app/auth",
+      github: "https://github.com/himanshu8github/codeMatrix"
+    }
+  ];
 
-    <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-      {/* TravelBuddy */}
-      <div className="p-6 border rounded-xl shadow bg-gray-900">
-        <h3 className="text-2xl font-bold mb-2 text-white">TravelBuddy</h3>
-        <p className="mb-3 text-gray-300">
-          AI-powered travel planner generating personalized itineraries using Gemini and Cohere API.
-          Includes secure Firebase authentication and smart trip recommendations.
-        </p>
-        <div className="text-sm text-gray-400 mb-3">
-          <strong>Tech Used:</strong> React, Tailwind CSS, Shadcn, Gemini API, Cohere API,
-          Express, Node.js, Firebase
+  return (
+    <section
+      className="py-20 bg-gradient-to-b from-black via-gray-950 to-black px-6 md:px-12 text-white"
+      id="projects"
+    >
+      <div className="max-w-6xl mx-auto">
+        {/* Heading */}
+        <div className="text-center mb-12 animate-fadeIn">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+            Featured Projects
+          </h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-blue-400 to-purple-600 mx-auto rounded-full mb-6"></div>
+          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
+            Showcasing my best work built with modern technologies and deployed to production.
+          </p>
         </div>
-        <div className="flex justify-center gap-4">
-          <a
-            href="https://travelbuddy-1-m1pr.onrender.com/"
-            target="_blank"
-            rel="noreferrer"
-            className="text-blue-400 underline hover:text-blue-600 font-medium"
-          >
-            Live
-          </a>
-          <a
-            href="https://github.com/himanshu8github/TravelBuddy"
-            target="_blank"
-            rel="noreferrer"
-            className="text-blue-400 underline hover:text-blue-600 font-medium"
-          >
-            GitHub
-          </a>
+
+        {/* Projects Grid */}
+        <div className="grid md:grid-cols-2 gap-6">
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className="group p-6 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 animate-slideUp"
+              style={{ animationDelay: `${0.1 * (index + 1)}s` }}
+            >
+              {/* Header */}
+              <div className="flex items-start justify-between mb-4">
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-1">
+                    {project.emoji} {project.title}
+                  </h3>
+                </div>
+              </div>
+
+              {/* Description */}
+              <p className="text-gray-400 text-sm md:text-base mb-4 leading-relaxed">
+                {project.description}
+              </p>
+
+              {/* Tech Stack */}
+              <div className="mb-6">
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.slice(0, 5).map((t, i) => (
+                    <span
+                      key={i}
+                      className="px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-medium"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                  {project.tech.length > 5 && (
+                    <span className="px-2.5 py-1 rounded-full bg-gray-700/50 border border-gray-600 text-gray-300 text-xs font-medium">
+                      +{project.tech.length - 5} more
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              {/* Links */}
+              <div className="flex items-center gap-4 pt-4 border-t border-gray-700">
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition transform hover:scale-105"
+                >
+                  <ExternalLink size={16} />
+                  Live
+                </a>
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-700 text-gray-300 text-sm font-medium hover:border-gray-500 hover:text-white transition"
+                >
+                  <Github size={16} />
+                  GitHub
+                </a>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Ethical AI Detector */}
-      <div className="p-6 border rounded-xl shadow bg-gray-900">
-        <h3 className="text-2xl font-bold mb-2 text-white">Ethical AI Detector</h3>
-        <p className="mb-3 text-gray-300">
-          AI-driven bias detection tool that analyzes cultural, political, and emotional biases in text.
-          Provides real-time scoring and rewriting suggestions for inclusive communication.
-        </p>
-        <div className="text-sm text-gray-400 mb-3">
-          <strong>Tech Used:</strong> TypeScript, React, Shadcn, Gemini API, Express
-        </div>
-        <div className="flex justify-center gap-4">
-          <a
-            href="https://ai-baised-frontend.vercel.app/"
-            target="_blank"
-            rel="noreferrer"
-            className="text-blue-400 underline hover:text-blue-600 font-medium"
-          >
-            Live
-          </a>
-          <a
-            href="https://github.com/himanshu8github/BiasedTextAnalyserAIFrontend"
-            target="_blank"
-            rel="noreferrer"
-            className="text-blue-400 underline hover:text-blue-600 font-medium"
-          >
-            GitHub
-          </a>
-        </div>
-      </div>
+      <style>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
 
-      {/* TextTune */}
-      <div className="p-6 border rounded-xl shadow bg-gray-900">
-        <h3 className="text-2xl font-bold mb-2 text-white">TextTune</h3>
-        <p className="mb-3 text-gray-300">
-          AI writing assistant with grammar detection, contextual suggestions, and multilingual translation.
-          Enhanced UI with optimized performance and real-time writing improvements.
-        </p>
-        <div className="text-sm text-gray-400 mb-3">
-          <strong>Tech Used:</strong> React, Tailwind CSS, Gemini API, Express, Node.js, Firebase
-        </div>
-        <div className="flex justify-center gap-4">
-          <a
-            href="https://texttune-project.onrender.com"
-            target="_blank"
-            rel="noreferrer"
-            className="text-blue-400 underline hover:text-blue-600 font-medium"
-          >
-            Live
-          </a>
-          <a
-            href="https://github.com/himanshu8github/Ai-ChitChat"
-            target="_blank"
-            rel="noreferrer"
-            className="text-blue-400 underline hover:text-blue-600 font-medium"
-          >
-            GitHub
-          </a>
-        </div>
-      </div>
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
 
-      {/* Chatify */}
-      <div className="p-6 border rounded-xl shadow bg-gray-900">
-        <h3 className="text-2xl font-bold mb-2 text-white">Chatify</h3>
-        <p className="mb-3 text-gray-300">
-          Launched a full-stack real-time chat application with WebSocket enabling instant messaging between users,
-          providing a seamless and responsive chat experience. Implemented online user tracking, chat rooms, and
-          responsive UI with Tailwind CSS, improving engagement and usability. Users can create rooms, share IDs with
-          friends, and chat in real-time.
-        </p>
-        <div className="text-sm text-gray-400 mb-3">
-          <strong>Tech Used:</strong> React, Node.js, Express, WebSocket, Tailwind CSS
-        </div>
-        <div className="flex justify-center gap-4">
-          <a
-            href="https://chatify-wsocket.onrender.com/"
-            target="_blank"
-            rel="noreferrer"
-            className="text-blue-400 underline hover:text-blue-600 font-medium"
-          >
-            Live
-          </a>
-          <a
-            href="https://github.com/himanshu8github/Chatify"
-            target="_blank"
-            rel="noreferrer"
-            className="text-blue-400 underline hover:text-blue-600 font-medium"
-          >
-            GitHub
-          </a>
-        </div>
-      </div>
+        .animate-fadeIn {
+          animation: fadeIn 0.6s ease-out;
+        }
 
-      {/* Microsoft Azure Functions Project */}
-      <div className="p-6 border rounded-xl shadow bg-gray-900">
-        <h3 className="text-2xl font-bold mb-2 text-white">Azure Functions Deployment</h3>
-        <p className="mb-3 text-gray-300">
-          🚀 Built and deployed a serverless HTTP-triggered REST API on Microsoft Azure using Node.js. Implemented 
-          Azure AD authentication, API key security, and function-level authorization. Configured auto-scaling with 
-          the Consumption Plan (0–200 instances), integrated Application Insights for monitoring, and set up real-time 
-          logging & performance tracking. Gained hands-on experience in enterprise-level serverless architecture, 
-          deployment best practices, and monitoring production APIs.
-        </p>
-        <div className="text-sm text-gray-400 mb-3">
-          <strong>Tech Used:</strong> Node.js, Microsoft Azure Functions, Azure CLI, Azure AD, Application Insights
-        </div>
-        <div className="flex justify-center gap-4">
-          <a
-            href="https://github.com/himanshu8github/kalvigworkspace"
-            target="_blank"
-            rel="noreferrer"
-            className="text-blue-400 underline hover:text-blue-600 font-medium"
-          >
-            GitHub
-          </a>
-        </div>
-      </div>
-
-      {/* Coming Soon */}
-      <div className="p-6 border rounded-xl shadow bg-gray-900 flex flex-col items-center justify-center">
-        <h3 className="text-2xl font-bold mb-2 text-white">🚧 Coming Soon</h3>
-        <p className="mb-3 text-gray-400">
-          A new exciting project is in development. Stay tuned for updates!
-        </p>
-        <div className="text-gray-500 italic">Loading...</div>
-      </div>
-    </div>
-  </section>
-);
+        .animate-slideUp {
+          animation: slideUp 0.6s ease-out forwards;
+          opacity: 0;
+        }
+      `}</style>
+    </section>
+  );
+};
 
 export default Projects;

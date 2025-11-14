@@ -1,75 +1,168 @@
 import React from "react";
-import {
-  Code,
-  Layout,
-  Server,
-  Database,
-  Wrench,
-  Puzzle,
-} from "lucide-react";
+import { Code2, Database, Cpu, Cloud } from "lucide-react";
 
-const skills = [
-  {
-    title: "Languages",
-    icon: <Code className="w-6 h-6 text-blue-500" />,
-    items: ["C", "Python", "Java", "JavaScript", "TypeScript", "HTML5", "CSS3", "SQL"],
-  },
-  {
-    title: "Frontend",
-    icon: <Layout className="w-6 h-6 text-purple-500" />,
-    items: ["React.js", "Tailwind CSS", "Shadcn"],
-  },
-  {
-    title: "Backend",
-    icon: <Server className="w-6 h-6 text-yellow-500" />,
-    items: ["Node.js", "Express.js","Firebase (Auth)", "Postgres (Basics)"],
-  },
-  {
-    title: "Databases & Cloud",
-    icon: <Database className="w-6 h-6 text-green-500" />,
-    items: ["MongoDB", "Firebase(Database)","MySQL (Basics)", "Postgres(Basics)"],
-  },
-  {
-    title: "Tools & Platforms",
-    icon: <Wrench className="w-6 h-6 text-orange-500" />,
-    items: ["Git & GitHub", "Postman", "VS Code", "Bash", "Render", "Vercel"],
-  },
-  {
-    title: "Other Technologies",
-    icon: <Puzzle className="w-6 h-6 text-pink-500" />,
-    items: ["Nodemailer", "JWT", "Bcrypt", "Zustand", "WebSocket"],
-  },
-];
+const Skills = () => {
+  const skillCategories = [
+    {
+      title: "Frontend",
+      icon: Code2,
+      color: "blue",
+      skills: ["React", "Tailwind CSS", "JavaScript", "Shadcn UI", "DaisyUI"]
+    },
+    {
+      title: "Backend",
+      icon: Database,
+      color: "purple",
+      skills: ["Node.js", "Express.js", "MongoDB", "Firebase", "Mongoose", "JWT", "REST APIs"]
+    },
+    {
+      title: "AI & APIs",
+      icon: Cpu,
+      color: "green",
+      skills: ["Gemini API", "Cohere API", "Groq API", "Judge0 API", "Prompt Engineering"]
+    },
+    {
+      title: "Tools",
+      icon: Cloud,
+      color: "yellow",
+      skills: ["Git & GitHub", "Render", "Vercel", "MongoDB Atlas", "Redis"]
+    }
+  ];
 
-export default function Skills() {
+  const getColorClass = (color) => {
+    const colors = {
+      blue: "text-blue-400 border-blue-500/50 hover:border-blue-400",
+      purple: "text-purple-400 border-purple-500/50 hover:border-purple-400",
+      green: "text-green-400 border-green-500/50 hover:border-green-400",
+      yellow: "text-yellow-400 border-yellow-500/50 hover:border-yellow-400"
+    };
+    return colors[color];
+  };
+
   return (
-    <section id="skills" className="py-20 px-6 bg-black text-white">
-      <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-6 text-blue-500">Skills</h2>
-        <p className="text-gray-300 mb-12 text-lg">
-          Here are the technologies and tools I use to build scalable, modern, and responsive applications.
-        </p>
+    <section
+      className="py-20 bg-gradient-to-b from-black via-gray-950 to-black px-6 md:px-12 text-white"
+      id="skills"
+    >
+      <div className="max-w-6xl mx-auto">
+        {/* Heading */}
+        <div className="text-center mb-12 animate-fadeIn">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+            Skills & Expertise
+          </h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-blue-400 to-purple-600 mx-auto rounded-full"></div>
+        </div>
 
-        {/* Responsive grid: 2 cols on medium, 3 cols on large */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-          {skills.map((category, index) => (
-            <div
-              key={index}
-              className="bg-gray-900 shadow-md rounded-2xl p-6 hover:shadow-xl hover:scale-105 transition transform"
-            >
-              <div className="flex items-center gap-2 mb-4">
-                {category.icon}
-                <h3 className="text-xl font-semibold">{category.title}</h3>
+        {/* Skills Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {skillCategories.map((category, index) => {
+            const Icon = category.icon;
+            return (
+              <div
+                key={index}
+                className="p-6 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-blue-500/50 transition-all duration-300 animate-slideUp"
+                style={{ animationDelay: `${0.1 * (index + 1)}s` }}
+              >
+                {/* Header */}
+                <div className="flex items-center gap-3 mb-6">
+                  <Icon className={`w-7 h-7 md:w-8 md:h-8 ${getColorClass(category.color).split(" ")[0]}`} />
+                  <h3 className={`text-lg md:text-xl font-semibold ${getColorClass(category.color).split(" ")[0]}`}>
+                    {category.title}
+                  </h3>
+                </div>
+
+                {/* Skills */}
+                <div className="flex flex-wrap gap-3">
+                  {category.skills.map((skill, idx) => (
+                    <span
+                      key={idx}
+                      className={`px-3 py-1.5 rounded-lg bg-gray-800/50 border border-gray-700 text-gray-300 text-xs md:text-sm font-medium hover:bg-gray-700 transition ${getColorClass(category.color)}`}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <ul className="space-y-2 text-gray-200 list-disc list-inside">
-                {category.items.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
+            );
+          })}
+        </div>
+
+        {/* Proficiency Levels */}
+        <div className="p-8 rounded-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/30 animate-slideUp" style={{animationDelay: "0.5s"}}>
+          <h3 className="text-lg md:text-xl font-semibold text-white mb-6">Proficiency Levels</h3>
+          
+          <div className="space-y-5">
+            {/* Expert */}
+            <div>
+              <div className="flex justify-between mb-2">
+                <span className="text-gray-300 font-medium">Expert</span>
+                <span className="text-blue-400 text-sm font-semibold">90%</span>
+              </div>
+              <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                <div className="h-full w-[90%] bg-gradient-to-r from-blue-400 to-blue-500 rounded-full"></div>
+              </div>
+              <p className="text-gray-400 text-xs mt-1">React, Node.js, Express, MongoDB</p>
             </div>
-          ))}
+
+            {/* Proficient */}
+            <div>
+              <div className="flex justify-between mb-2">
+                <span className="text-gray-300 font-medium">Proficient</span>
+                <span className="text-purple-400 text-sm font-semibold">80%</span>
+              </div>
+              <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                <div className="h-full w-[80%] bg-gradient-to-r from-purple-400 to-purple-500 rounded-full"></div>
+              </div>
+              <p className="text-gray-400 text-xs mt-1">AI APIs, Firebase, Tailwind CSS</p>
+            </div>
+
+            {/* Intermediate */}
+            <div>
+              <div className="flex justify-between mb-2">
+                <span className="text-gray-300 font-medium">Intermediate</span>
+                <span className="text-green-400 text-sm font-semibold">70%</span>
+              </div>
+              <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                <div className="h-full w-[70%] bg-gradient-to-r from-green-400 to-green-500 rounded-full"></div>
+              </div>
+              <p className="text-gray-400 text-xs mt-1">SQL, Redis</p>
+            </div>
+          </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-fadeIn {
+          animation: fadeIn 0.6s ease-out;
+        }
+
+        .animate-slideUp {
+          animation: slideUp 0.6s ease-out forwards;
+          opacity: 0;
+        }
+      `}</style>
     </section>
   );
-}
+};
+
+export default Skills;
