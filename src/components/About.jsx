@@ -19,7 +19,9 @@ const About = () => (
           <Code className="w-8 h-8 text-blue-400 mb-3" />
           <h3 className="text-lg font-semibold mb-2 text-blue-400">Developer</h3>
           <p className="text-gray-400 text-sm leading-relaxed">
-            Final-year CSE student building production-ready full-stack applications with MERN stack and modern web technologies.
+          I specialize in building scalable web applications with the MERN
+           stack. My approach focuses on clean architecture, writing maintainable code, 
+          and delivering production-ready solutions that work reliably.
           </p>
         </div>
 
@@ -28,24 +30,25 @@ const About = () => (
           <Brain className="w-8 h-8 text-purple-400 mb-3" />
           <h3 className="text-lg font-semibold mb-2 text-purple-400">AI Enthusiast</h3>
           <p className="text-gray-400 text-sm leading-relaxed">
-            4+ AI-powered projects deployed with 50+ active users. Expert in integrating Gemini, Cohere, and Groq APIs.
+           I've deployed four AI-powered projects currently serving over 50 active users. Each one taught me something new, and I'm always looking for the next challenge to tackle.
           </p>
         </div>
       </div>
 
-      {/* Detailed Paragraphs */}
+
+{/* Detailed Paragraphs */}
       <div className="space-y-6 animate-slideUp" style={{animationDelay: "0.3s"}}>
-        <p className="text-gray-300 text-base md:text-lg leading-relaxed text-justify">
-          I'm <span className="text-blue-400 font-semibold">Himanshu Choudhary</span>, a <span className="text-blue-400 font-semibold">final-year Computer Science Engineering student</span> currently interning as a <span className="text-blue-400 font-semibold">Full Stack Web Developer at Kalvig</span>. With a strong foundation in full-stack development and AI integration, I've successfully built and deployed <span className="text-purple-400 font-semibold">4+ AI-driven projects</span> that serve <span className="text-purple-400 font-semibold">50+ active users</span>.
+        <p className="text-white text-base md:text-lg leading-relaxed">
+          I'm Himanshu, a final-year Computer Science Engineering student and Full Stack Developer intern at Kalvig. 
+          I build web applications that solve real problems, from travel planning tools to DSA learning platforms.
         </p>
 
-        <p className="text-gray-300 text-base md:text-lg leading-relaxed text-justify">
-          My expertise spans across <span className="text-blue-400 font-semibold">React, Node.js, Express, MongoDB, Firebase, and Tailwind CSS</span> for frontend and backend development. I'm proficient in integrating cutting-edge AI APIs including <span className="text-purple-400 font-semibold">Gemini, Cohere, and Groq</span> to create intelligent, user-centric applications. Notable projects include <span className="text-green-400 font-semibold">TravelBuddy</span> (AI travel planner), <span className="text-green-400 font-semibold">CodeMatrix</span> (DSA learning platform), and <span className="text-green-400 font-semibold">Ethical AI Detector</span> (bias detection tool).
+        <p className="text-white text-base md:text-lg leading-relaxed">
+         I work with React, Node.js, MongoDB, and Firebase, with hands-on experience integrating AI APIs like Gemini, Cohere, and Groq. 
+         I've shipped 4+ projects serving 50+ active users, always focusing on clean code and user experiences that just work.
         </p>
 
-        <p className="text-gray-300 text-base md:text-lg leading-relaxed text-justify">
-          Beyond coding, I'm driven by a passion for <span className="text-blue-400 font-semibold">continuous learning</span> and <span className="text-blue-400 font-semibold">knowledge sharing</span>. Whether it's experimenting with new technologies, optimizing performance, or exploring emerging AI trends, I'm always motivated to push boundaries and grow as a developer. I believe in building solutions that are not just functional, but also scalable, user-friendly, and impactful.
-        </p>
+  
       </div>
     </div>
 
