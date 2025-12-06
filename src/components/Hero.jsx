@@ -29,8 +29,8 @@ export default function Hero() {
 
         {/* Description */}
         <p className="text-gray-400 text-sm md:text-base mb-6 leading-relaxed max-w-xl mx-auto animate-slideDown" style={{animationDelay: "0.3s"}}>
-          I build production-ready web applications using the MERN stack and AI APIs. 
-          Currently interning at <span className="text-blue-400 font-semibold">Kalvig</span> and 
+          I build production-ready web applications using Nest.js, Next.js, Typescript.... and AI APIs. 
+          Currently working as Associate FullStack Developer at <span className="text-blue-400 font-semibold">Almonds.ai</span> and 
           passionate about creating impactful solutions.
         </p>
 

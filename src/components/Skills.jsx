@@ -4,16 +4,28 @@ import { Code2, Database, Cpu, Cloud } from "lucide-react";
 const Skills = () => {
   const skillCategories = [
     {
+      title: "Programming Languages",
+      icon: Code2,
+      color: "blue",
+      skills: ["JavaScript", "TypeScript", "Java", "C"]
+    },
+    {
       title: "Frontend",
       icon: Code2,
       color: "blue",
-      skills: ["React", "Tailwind CSS", "JavaScript", "Shadcn UI", "DaisyUI"]
+      skills: ["React", "NextJS", "Tailwind CSS", "Shadcn UI", "DaisyUI"]
     },
     {
       title: "Backend",
       icon: Database,
       color: "purple",
-      skills: ["Node.js", "Express.js", "MongoDB", "Firebase", "Mongoose", "JWT", "REST APIs"]
+      skills: [ "Node.js", "NestJS", "Express.js", "JWT", "REST APIs"]
+    },
+    {
+      title: "Database",
+      icon: Database,
+      color: "purple",
+      skills: ["MongoDB", "MySQL", "Firebase", "Mongoose", "SQL"]
     },
     {
       title: "AI & APIs",
@@ -88,12 +100,12 @@ const Skills = () => {
         </div>
 
         {/* Proficiency Levels */}
-        <div className="p-8 rounded-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/30 animate-slideUp" style={{animationDelay: "0.5s"}}>
-          <h3 className="text-lg md:text-xl font-semibold text-white mb-6">Proficiency Levels</h3>
-          
-          <div className="space-y-5">
+        {/* <div className="p-8 rounded-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/30 animate-slideUp" style={{animationDelay: "0.5s"}}> */}
+          {/* <h3 className="text-lg md:text-xl font-semibold text-white mb-6">Proficiency Levels</h3>
+           */}
+          {/* <div className="space-y-5"> */}
             {/* Expert */}
-            <div>
+            {/* <div>
               <div className="flex justify-between mb-2">
                 <span className="text-gray-300 font-medium">Expert</span>
                 <span className="text-blue-400 text-sm font-semibold">90%</span>
@@ -101,11 +113,11 @@ const Skills = () => {
               <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
                 <div className="h-full w-[90%] bg-gradient-to-r from-blue-400 to-blue-500 rounded-full"></div>
               </div>
-              <p className="text-gray-400 text-xs mt-1">React, Node.js, Express, MongoDB</p>
-            </div>
+              <p className="text-gray-400 text-xs mt-1">React, Node.js, Express, MongoDB, JavaScript, TypeScript</p>
+            </div> */}
 
             {/* Proficient */}
-            <div>
+            {/* <div>
               <div className="flex justify-between mb-2">
                 <span className="text-gray-300 font-medium">Proficient</span>
                 <span className="text-purple-400 text-sm font-semibold">80%</span>
@@ -113,11 +125,11 @@ const Skills = () => {
               <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
                 <div className="h-full w-[80%] bg-gradient-to-r from-purple-400 to-purple-500 rounded-full"></div>
               </div>
-              <p className="text-gray-400 text-xs mt-1">AI APIs, Firebase, Tailwind CSS</p>
-            </div>
+              <p className="text-gray-400 text-xs mt-1">NestJS, AI APIs, Firebase, Tailwind CSS, MySQL</p>
+            </div> */}
 
             {/* Intermediate */}
-            <div>
+            {/* <div>
               <div className="flex justify-between mb-2">
                 <span className="text-gray-300 font-medium">Intermediate</span>
                 <span className="text-green-400 text-sm font-semibold">70%</span>
@@ -125,10 +137,12 @@ const Skills = () => {
               <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
                 <div className="h-full w-[70%] bg-gradient-to-r from-green-400 to-green-500 rounded-full"></div>
               </div>
-              <p className="text-gray-400 text-xs mt-1">SQL, Redis</p>
-            </div>
-          </div>
-        </div>
+              <p className="text-gray-400 text-xs mt-1">Java, C, Redis, SQL</p>
+            </div> */}
+
+
+          {/* </div> */}
+        {/* </div> */}
       </div>
 
       <style>{`
