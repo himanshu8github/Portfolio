@@ -1,3 +1,5 @@
+'use client';
+
 import React from "react";
 import { ExternalLink, Github } from "lucide-react";
 
@@ -59,7 +61,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group p-6 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 animate-slideUp"
+              className="group p-6 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 hover:scale-[1.02] cursor-pointer animate-slideUp"
               style={{ animationDelay: `${0.1 * (index + 1)}s` }}
             >
               {/* Header */}
@@ -82,7 +84,7 @@ const Projects = () => {
                   {project.tech.slice(0, 5).map((t, i) => (
                     <span
                       key={i}
-                      className="px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-medium"
+                      className="px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-medium hover:bg-blue-500/20 transition"
                     >
                       {t}
                     </span>
@@ -120,37 +122,6 @@ const Projects = () => {
           ))}
         </div>
       </div>
-
-      <style>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-
-        @keyframes slideUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .animate-fadeIn {
-          animation: fadeIn 0.6s ease-out;
-        }
-
-        .animate-slideUp {
-          animation: slideUp 0.6s ease-out forwards;
-          opacity: 0;
-        }
-      `}</style>
     </section>
   );
 };
