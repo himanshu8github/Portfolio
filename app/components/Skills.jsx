@@ -39,7 +39,7 @@ const Skills = () => {
       title: "Tools",
       icon: Cloud,
       color: "yellow",
-      skills: ["Git & GitHub", "Render", "Vercel"]
+      skills: ["Git & GitHub", "Render", "Vercel", "MongoDB Atlas", "Redis"]
     }
   ];
 
